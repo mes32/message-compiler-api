@@ -1,6 +1,11 @@
+const moment = require('moment');
+
 class Message {
     constructor(template, company, guest) {
-        this.timestamp = 'YYYY-MM-DD @24:00:00';
+        const currentTime = moment();
+
+
+        this.timestamp = currentTime.format();
         this.message = template.message;
     }
 }

@@ -1,7 +1,52 @@
 [
     {
         "id": 1,
-        "description": "Hello World",
+        "description": "Test: Hello World",
         "message": "Hello World!"
+    },
+    {
+        "id": 2,
+        "description": "Test: Includes double quotes",
+        "message": "\"The true method of knowledge is experiment.\" -William Blake"
+    },
+    {
+        "id": 3,
+        "description": "Test: Includes a dollar sign",
+        "message": "That will cost $5.00."
+    },
+    {
+        "id": 4,
+        "description": "Test: Includes placeholder example text",
+        "message": "Here is an example of the placeholder text \\${Time.greeting} used by this API."
+    },
+    {
+        "id": 5,
+        "description": "Test: Includes a non-existant placeholder.",
+        "message": "Goodmorning ${ERROR}"
+    },
+    {
+        "id": 6,
+        "description": "Test: Explains the rules of escape characters used for templates and placeholders",
+        "message": "In template messages '\\' is used as an escape character. Since double quote (i.e. \") is used start and end JSON string values, to obtain an output containing a double quote requires an escaped double quote in the template message (i.e. \\\"). "
+    },
+    {
+        "id": 7,
+        "description": "Simple greeting (time sensitive)",
+        "message": "${Time.greeting} ${guest.firstName}!"
+    },
+    {
+        "id": 8,
+        "description": "Simple goodbye (time sensitive)",
+        "message": "Goodbye ${guest.firstName}. ${Time.goodbye}."
+    },
+    {
+        "id": 9,
+        "description": "Friendly and detailed greeting for guest",
+        "message": "${Time.greeting} ${guest.firstName}, and welcome to ${company.company}! Room ${guest.reservation.roomNumber} is now ready you. Enjoy your stay, and let us know if you need anything"
+    },
+    {
+        "id": 10,
+        "description": "A reciept-like message guest",
+        "message": "Name: ${guest.firstName} ${guest.lastName}\\nHotel: ${company.company} (${company.city})\\nRoom #: ${guest.reservation.room}\\nDates: ${guest.reservation.startTimestamp} thru ${guest.reservation.endTimestamp}"
     }
 ]
