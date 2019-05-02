@@ -15,12 +15,12 @@ class Message {
     }
 
     evaluateVariables(template, variableMap) {
-        let message = '';
+        let message = [];
         for (let i = 0; i < template.length; i++) {
             if (template[i] === '\\' && i + 1 < template.length && template[i + 1] === '$') {
                 // This downgrades escaped variables
                 // (e.g. \\${var} => ${var})
-                message += '$';
+                message.push('$');
                 i += 1;
             } else if (template[i] === '$' && i + 1 < template.length && template[i + 1] === '{') {
                 // This evaluates variables
@@ -29,7 +29,7 @@ class Message {
                 for (let j = i + 1; j < template.length; j++) {
                     if (template[j] === '}') {
                         varName = template.substring(i+2, j);
-                        message += variableMap.lookup(varName);
+                        message.push(variableMap.lookup(varName));
                         i += varName.length + 2;
                         break;
                     }
@@ -38,10 +38,10 @@ class Message {
                     throw new Error('Could not evaluate variable name in method evaluateVariables() of class Message.');
                 }
             } else {
-                message += template[i];
+                message.push(template[i]);
             }
         }
-        return message;
+        return message.join('');
     }
 }
 
