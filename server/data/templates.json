@@ -46,7 +46,7 @@
     },
     {
         "id": 10,
-        "description": "A reciept-like message guest",
+        "description": "A reciept-like message for guest",
         "message": "Name: ${guest.firstName} ${guest.lastName}\\nHotel: ${company.company} (${company.city})\\nRoom #: ${guest.reservation.room}\\nDates: ${guest.reservation.startTimestamp} thru ${guest.reservation.endTimestamp}"
     }
 ]

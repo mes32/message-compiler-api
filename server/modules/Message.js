@@ -1,9 +1,10 @@
 const moment = require('moment');
+const momentTimezone = require('moment-timezone');
 
 class Message {
     constructor(template, company, guest) {
-        const currentTime = moment();
-
+        const timezone = company.timezone;
+        const currentTime = moment().tz(timezone);
 
         this.timestamp = currentTime.format();
         this.message = template.message;
