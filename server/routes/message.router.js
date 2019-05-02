@@ -9,9 +9,9 @@ const guestArray = require('../data/guests.json');
 const templateArray = require('../data/templates.json');
 
 router.get('/', (req, res) => {
-    const templateID = req.query.template;
-    const companyID = req.query.company;
-    const guestID = req.query.guest;
+    const templateID = parseInt(req.query.template);
+    const companyID = parseInt(req.query.company);
+    const guestID = parseInt(req.query.guest);
 
     if (templateID && companyID && guestID) {
         try {

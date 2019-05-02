@@ -5,7 +5,6 @@ const TemplateVariableMapper = require('../modules/TemplateVariableMapper');
 
 class Message {
     constructor(template, company, guest) {
-        const timezone = company.timezone;
         const currentTime = moment().tz(company.timezone);
         const variableMap = new TemplateVariableMapper(company, guest, currentTime);
         let message = this.evaluateVariables(template.message, variableMap);

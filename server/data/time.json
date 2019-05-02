@@ -1,0 +1,52 @@
+[
+    {
+        "id": "greeting",
+        "rules": [
+            {
+                "value": "Good evening",
+                "hourStart": 0,
+                "hourEnd": 4
+            },
+            {
+                "value": "Good morning",
+                "hourStart": 4,
+                "hourEnd": 12
+            },
+            {
+                "value": "Good afternoon",
+                "hourStart": 12,
+                "hourEnd": 16
+            },
+            {
+                "value": "Good evening",
+                "hourStart": 16,
+                "hourEnd": 23
+            }
+        ]
+    },
+    {
+        "id": "goodbye",
+        "rules": [
+            {
+                "value": "Have a restful night",
+                "hourStart": 0,
+                "hourEnd": 4
+            },
+            {
+                "value": "Enjoy the rest of your day",
+                "hourStart": 4,
+                "hourEnd": 18
+            },
+            {
+                "value": "Have a relaxing evening",
+                "hourStart": 18,
+                "hourEnd": 21
+            },
+            {
+                "value": "Have a restful night",
+                "hourStart": 21,
+                "hourEnd": 23
+            }
+        ]
+    }
+]

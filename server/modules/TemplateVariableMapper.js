@@ -1,15 +1,21 @@
 const moment = require('moment');
 require('moment-timezone');
 
+const TimeSensitive = require('./TimeSensitive');
+
 const UNIX_SECONDS_FORMAT = 'x';
 const MESSAGE_TIME_FORMAT = 'ddd DD/MM/YYYY, h:mmA z';
 
 class TemplateVariableMapper {
     constructor(company, guest, currentTime) {
         if (company, guest, currentTime) {
+            const timeSensitive = new TimeSensitive(currentTime);
+
             this.city = company.city;
             this.company = company.company;
             this.firstName = guest.firstName;
+            this.goodbye = timeSensitive.goodbye;
+            this.greeting = timeSensitive.greeting;
             this.lastName = guest.lastName;
             this.reservationEnd = this.getTimeFormat(guest.reservation.startTimestamp, company.timezone);
             this.reservationStart = this.getTimeFormat(guest.reservation.endTimestamp, company.timezone);
@@ -44,8 +50,10 @@ class TemplateVariableMapper {
                 return this.roomNumber;
             case 'timezone':
                 return this.timezone;
-                // Time.goodbye
-                // Time.greeting
+            case 'Time.goodbye':
+                return this.goodbye;
+            case 'Time.greeting':
+                return this.greeting;
             default:
                 throw new Error(`Unknown placeholder variable '${token}'. Unable to lookup value of placeholder.`);
         }
