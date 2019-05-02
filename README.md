@@ -1,7 +1,7 @@
 # Message Compiler API
-Parses message templates and returns customized messages. Inserts data specific to intended recipients to replace placeholder tokens.
+This is a webserver that composes messages that might be sent to hotel guests. It is not really a 'compiler' in the usual computer science sense of that word. Rather it parses message templates and compiles different pieces of data to produce customized messages. When parsing the template placeholder tokens are evaluated and replaced with data specific to guest or reservation.
 
-Placeholder variables use dot notation and are wrapped between `${` and `}`. For example the placeholder for guest's first name would be written as `${guest.firstName}` in the message template.
+The format for placeholder variables use dot notation and they are wrapped between `${` and `}`. For example the placeholder for a guest's first name would be written as `${guest.firstName}` in the message template.
 
 Message templates are described by JSON objects such as the following
 
