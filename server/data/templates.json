@@ -21,37 +21,42 @@
     },
     {
         "id": 5,
-        "description": "Test: Includes a non-existant placeholder.",
+        "description": "Failing Test: Includes a nonexistent placeholder",
         "message": "Goodmorning ${ERROR}"
     },
     {
         "id": 6,
+        "description": "Failing Test: Includes a placeholder without a closing bracket",
+        "message": "Goodmorning ${firstName"
+    },
+    {
+        "id": 7,
         "description": "Test: Explains the rules of escape characters used for templates and placeholders",
         "message": "In template messages '\\' is used as an escape character. Since double quote (i.e. \") is used start and end JSON string values, to obtain an output containing a double quote requires an escaped double quote in the template message (i.e. \\\"). "
     },
     {
-        "id": 7,
-        "description": "Simple greeting (time insensitive)",
-        "message": "Hello ${guest.firstName} ${guest.lastName}."
-    },
-    {
         "id": 8,
-        "description": "Simple greeting (time sensitive)",
-        "message": "${Time.greeting} ${guest.firstName}!"
+        "description": "Simple greeting (time insensitive)",
+        "message": "Hello ${firstName} ${lastName}."
     },
     {
         "id": 9,
-        "description": "Simple goodbye (time sensitive)",
-        "message": "Goodbye ${guest.firstName}. ${Time.goodbye}."
+        "description": "Simple greeting (time sensitive)",
+        "message": "${Time.greeting} ${firstName}!"
     },
     {
         "id": 10,
-        "description": "Friendly and detailed greeting for guest",
-        "message": "${Time.greeting} ${guest.firstName}, and welcome to ${company.company}! Room ${guest.reservation.roomNumber} is now ready you. Enjoy your stay, and let us know if you need anything"
+        "description": "Simple goodbye (time sensitive)",
+        "message": "Goodbye ${firstName}. ${Time.goodbye}."
     },
     {
         "id": 11,
+        "description": "Friendly and detailed greeting for guest",
+        "message": "${Time.greeting} ${firstName}, and welcome to ${company}! Room ${roomNumber} is now ready you. Enjoy your stay, and let us know if you need anything"
+    },
+    {
+        "id": 12,
         "description": "A reciept-like message for guest",
-        "message": "Name: ${guest.firstName} ${guest.lastName}\\nHotel: ${company.company} (${company.city})\\nRoom #: ${guest.reservation.room}\\nDates: ${guest.reservation.startTimestamp} thru ${guest.reservation.endTimestamp}"
+        "message": "Name: ${firstName} ${lastName}\nHotel: ${company} (${city})\nRoom #: ${roomNumber}\nDates: ${reservationStart} thru ${reservationEnd}"
     }
 ]

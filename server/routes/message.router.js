@@ -20,10 +20,12 @@ router.get('/', (req, res) => {
             const guest = JsonArray.select(guestArray, guestID);
             const message = new Message(template, company, guest);
             res.send(message);
-        } catch (error) {
+        } catch (err) {
+            console.error(err);
             res.sendStatus(500);
         }
     } else {
+        console.error(`Missing HTTP query parameters. Route GET /message requires 'template', 'company', and 'guest'.`);
         res.sendStatus(500);
     }
 });
