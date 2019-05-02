@@ -31,21 +31,26 @@
     },
     {
         "id": 7,
+        "description": "Simple greeting (time insensitive)",
+        "message": "Hello ${guest.firstName} ${guest.lastName}."
+    },
+    {
+        "id": 8,
         "description": "Simple greeting (time sensitive)",
         "message": "${Time.greeting} ${guest.firstName}!"
     },
     {
-        "id": 8,
+        "id": 9,
         "description": "Simple goodbye (time sensitive)",
         "message": "Goodbye ${guest.firstName}. ${Time.goodbye}."
     },
     {
-        "id": 9,
+        "id": 10,
         "description": "Friendly and detailed greeting for guest",
         "message": "${Time.greeting} ${guest.firstName}, and welcome to ${company.company}! Room ${guest.reservation.roomNumber} is now ready you. Enjoy your stay, and let us know if you need anything"
     },
     {
-        "id": 10,
+        "id": 11,
         "description": "A reciept-like message for guest",
         "message": "Name: ${guest.firstName} ${guest.lastName}\\nHotel: ${company.company} (${company.city})\\nRoom #: ${guest.reservation.room}\\nDates: ${guest.reservation.startTimestamp} thru ${guest.reservation.endTimestamp}"
     }
