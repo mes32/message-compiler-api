@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<code>
+    <h1>Message Compiler API</h1>
+    <h2>About</h2>
+    <p>
+        This is a simple webserver that composes customized messages.
+    </p>
+    <h2>Routes</h2>
+    <ul>
+        <li>GET <a href="company">/company</a> ... Returns JSON array of all companies</li>
+        <li>GET <a href="guest">/guest</a> ... Returns JSON array of all guests</li>
+        <li>GET <a href="template">/template</a> ... Returns JSON array of all available message templates</li>
+        <li>GET /message ... Requires query params: <b>template</b>, <b>company</b>, and <b>guest</b> providing IDs. Returns a message based on that template and inserting data from guest and company.</li>
+        <li>POST /message ... Takes a JSON object with <b>companyID</b>, <b>guestID</b>, <b>template</b>. Note: that template is a custom message template string and not a template ID.</li>
+    </ul>
+</code>
+</body>
+</html>

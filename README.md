@@ -79,7 +79,7 @@ If I had more time I would consider adding user authentication. If some of the u
 
 Using a database in conjunction with user authentication would make it feasible to allow create, update, and delete actions on the data. This would allow the application to be used in more dynamic and interesting ways.
 
-I am pretty happy with the language I designed for the template messages. I think it is readable and thru the use of escape characters it doesn't restrict what else can go into messages. In the future it should be easy to extend the template language by adding new variables. While the parsing seems to be working pretty well, my current implementation feels like it could maybe be more computationally efficient. This problem is a bit outside my day-to-day programming experience. It would probably be good to brush up on how this sort of code parsing problem has been tackled in the past. 
+I am pretty happy with the language I designed for the template messages. I think it is readable and thru the use of escape characters it doesn't restrict what else can go into messages. In the future it should be easy to extend the template language by adding new variables. While the parsing seems to be working pretty well, my current implementation feels like it could maybe be more computationally efficient. This problem is a bit outside my day-to-day programming experience. It would probably be good to brush up on compiler/parser design to see how this sort of code iterpretation problem is typically handled. 
 
 ## Author
 Mike Stockman
