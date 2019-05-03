@@ -1,7 +1,7 @@
 # Message Compiler API
 This is a simple webserver that composes customized messages that hotel staff might send to hotel guests. It is not really a 'compiler' in the usual computer science sense of the word. Rather it parses message templates and compiles different pieces of data to produce a custom message. When parsing the template placeholder tokens are evaluated and replaced with data specific to a guest and their current reservation.
 
-Placeholder variables are wrapped between `${` and `}`. For example the placeholder for a guest's first name could be written as `${firstName}` in the message template.
+Placeholder variables are wrapped between `${` and `}`. For example the placeholder for a guest's first name could be written as `${firstName}` in the message template. Note, you can escape placeholder notation using `\\` so if you wanted the output message to include the literal string ${firstName} rather than evaluating firstName you could write `\\${firstName}`.
 
 Message templates are described by JSON objects such as the following
 
@@ -63,6 +63,8 @@ Once the server is running on localhost you can query the API using HTTP GET req
 `localhost:5000/message` is where things start getting interesting. The message URL requires three query parameters `template`, `company`, and `guest` specifying the respective IDs. It will then return a JSON object containing a message. This message will be based on the requested template and inserting data from guest and company. 
 
 For example this link [localhost:5000/message?template=1&company=1&guest=1](http://localhost:5000/message?template=1&company=1&guest=1) will return message template id=1, evaluated using data from company id=1, and guest id=1. If the message router is unable to produce the requested message for any reason it will return status code 500. A description of the error will print on the command line where the server was started.
+
+`localhost:5000/message` also accepts POST requests containing a JSON object with `companyID`, `guestID`, and `template`. Note that template is a custom message template string rather than a template ID.
 
 ## Discussion
 Assuming the user does not request nonexistent IDs, the next most likely point of failure is requesting a nonexistent placeholder in the template. The template strings can be thought of as a special purpose computer language and missing or misspelled placeholders are a bug in that code. I made every effort to catch and log descriptive errors particularly when working with the template strings. However if this project where to be adapted to a production setting, I think a more formal system finding and recording errors in template code would be nice to have.
