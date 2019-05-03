@@ -32,7 +32,7 @@
     {
         "id": 7,
         "description": "Test: Explains the rules of escape characters used for templates and placeholders",
-        "message": "In template messages '\\' is used as an escape character. Since double quote (i.e. \") is used start and end JSON string values, to obtain an output containing a double quote requires an escaped double quote in the template message (i.e. \\\"). "
+        "message": "In template messages '\\' is used as an escape character. Since double quote (i.e. \") is used start and end JSON string values, to obtain an output containing a double quote requires an escaped double quote in the template message (i.e. \\\"). Additionally you may use two backslashes to escape the opening tag for a placeholder to print the literal placeholder string (e.g. \\\\\\${placeholder} => \\${placeholder})"
     },
     {
         "id": 8,
