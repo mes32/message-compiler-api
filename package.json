@@ -6,7 +6,7 @@
   "scripts": {
     "server": "nodemon --watch server server/server.js",
     "start": "node server/server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest server/tests/*.test.js --forceExit"
   },
   "repository": {
     "type": "git",
@@ -22,7 +22,9 @@
   "dependencies": {
     "body-parser": "^1.19.0",
     "express": "^4.16.4",
+    "jest": "^24.7.1",
     "moment": "^2.24.0",
-    "moment-timezone": "^0.5.25"
+    "moment-timezone": "^0.5.25",
+    "supertest": "^4.0.2"
   }
 }

@@ -20,6 +20,7 @@ Message templates are described by JSON objects such as the following
 - `body-parser`
 - `Moment.js` and `moment-timezone`
 - `nodemon`
+- `Jest` and `supertest`
 
 ## Requirements
 - [Git](https://git-scm.com/)
