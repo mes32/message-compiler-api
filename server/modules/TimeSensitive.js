@@ -2,7 +2,7 @@ const moment = require('moment');
 require('moment-timezone');
 
 const timeRules = require('../data/time.json');
-const JsonArray = require('../modules/JsonArray');
+const JsonArray = require('../classes/JsonArray');
 
 const GOODBYE_ID = 'goodbye';
 const GREETING_ID = 'greeting';

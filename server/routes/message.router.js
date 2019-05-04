@@ -1,8 +1,8 @@
 const express = require('express');
 const router = express.Router();
 
-const JsonArray = require('../modules/JsonArray');
-const Message = require('../modules/Message');
+const JsonArray = require('../classes/JsonArray');
+const Message = require('../classes/Message');
 
 const companyArray = require('../data/companies.json');
 const guestArray = require('../data/guests.json');
