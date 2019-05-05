@@ -1,12 +1,12 @@
-// const IndexedArray = require('./IndexedArray');
-const Reservation = require('Reservation');
+const IndexedArray = require('./IndexedArray');
+const Reservation = require('./Reservation');
 
 class Guest {
     constructor(jsonObject) {
         this.id = jsonObject.id;
         this.firstName = jsonObject.firstName;
         this.lastName = jsonObject.lastName;
-        this.reservation = new Reservation(jsonObjectreservation);
+        this.reservation = new Reservation(jsonObject.reservation);
 
         for (let variable in this) {
             if (this[variable] === undefined) {
@@ -17,7 +17,7 @@ class Guest {
 
     static loadJSON(jsonArray) {
         const guestArray = jsonArray.map(jsonObject => new Guest(jsonObject));
-        // return new IndexedArray(guestArray);
+        return new IndexedArray(guestArray);
     }
 }
 

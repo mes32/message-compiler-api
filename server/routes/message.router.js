@@ -1,12 +1,18 @@
 const express = require('express');
 const router = express.Router();
 
-const JsonArray = require('../classes/JsonArray');
+const Company = require('../classes/Company');
+const Guest = require('../classes/Guest');
 const Message = require('../classes/Message');
+const Template = require('../classes/Template');
 
-const companyArray = require('../data/companies.json');
-const guestArray = require('../data/guests.json');
-const templateArray = require('../data/templates.json');
+const companyJSON = require('../data/companies.json');
+const guestJSON = require('../data/guests.json');
+const templateJSON = require('../data/templates.json');
+
+const companyArray = Company.loadJSON(companyJSON);
+const guestArray = Guest.loadJSON(guestJSON);
+const templateArray = Template.loadJSON(templateJSON);
 
 router.get('/', (req, res) => {
     const templateID = parseInt(req.query.template);
@@ -15,9 +21,9 @@ router.get('/', (req, res) => {
 
     if (templateID && companyID && guestID) {
         try {
-            const template = JsonArray.select(templateArray, templateID);
-            const company = JsonArray.select(companyArray, companyID);
-            const guest = JsonArray.select(guestArray, guestID);
+            const template = templateArray.select(templateID);
+            const company = companyArray.select(companyID);
+            const guest = guestArray.select(guestID);
             const message = new Message(template, company, guest);
             res.send(message);
         } catch (err) {
@@ -38,8 +44,8 @@ router.post('/', (req, res) => {
     if (templateString && companyID && guestID) {
         try {
             const template = { message: templateString };
-            const company = JsonArray.select(companyArray, companyID);
-            const guest = JsonArray.select(guestArray, guestID);
+            const company = companyArray.select(companyID);
+            const guest = guestArray.select(guestID);
             const message = new Message(template, company, guest);
             res.send(message);
         } catch (err) {

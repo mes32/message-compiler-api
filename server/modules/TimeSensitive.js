@@ -1,8 +1,9 @@
 const moment = require('moment');
 require('moment-timezone');
 
-const timeRules = require('../data/time.json');
-const JsonArray = require('../classes/JsonArray');
+const timeRulesJSON = require('../data/time.json');
+const IndexedArray = require('../classes/IndexedArray');
+const timeRules = new IndexedArray(timeRulesJSON);
 
 const GOODBYE_ID = 'goodbye';
 const GREETING_ID = 'greeting';
@@ -17,7 +18,7 @@ class TimeSensitive {
     }
 
     getGoodbye(currentTime) {
-        const rules = JsonArray.select(timeRules, GOODBYE_ID).rules;
+        const rules = timeRules.select(GOODBYE_ID).rules;
         for (let rule of rules) {
             if (this.isBetween(currentTime, rule.hourStart, rule.hourEnd)) {
                 return rule.value;
@@ -27,7 +28,7 @@ class TimeSensitive {
     }
 
     getGreeting(currentTime) {
-        const rules = JsonArray.select(timeRules, GREETING_ID).rules;
+        const rules = timeRules.select(GREETING_ID).rules;
         for (let rule of rules) {
             if (this.isBetween(currentTime, rule.hourStart, rule.hourEnd)) {
                 return rule.value;

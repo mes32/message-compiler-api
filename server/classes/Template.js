@@ -1,4 +1,4 @@
-// const IndexedArray = require('./IndexedArray');
+const IndexedArray = require('./IndexedArray');
 
 class Template {
     constructor(jsonObject) {
@@ -15,7 +15,7 @@ class Template {
 
     static loadJSON(jsonArray) {
         const templateArray = jsonArray.map(jsonObject => new Template(jsonObject));
-        // return new IndexedArray(templateArray);
+        return new IndexedArray(templateArray);
     }
 }
 

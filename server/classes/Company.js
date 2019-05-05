@@ -1,4 +1,4 @@
-// const IndexedArray = require('./IndexedArray');
+const IndexedArray = require('./IndexedArray');
 
 class Company {
     constructor(jsonObject) {
@@ -16,7 +16,7 @@ class Company {
 
     static loadJSON(jsonArray) {
         const companyArray = jsonArray.map(jsonObject => new Company(jsonObject));
-        // return new IndexedArray(companyArray);
+        return new IndexedArray(companyArray);
     }
 }
 
