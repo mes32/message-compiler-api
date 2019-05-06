@@ -1,7 +1,7 @@
 const moment = require('moment');
 require('moment-timezone');
 
-const timeRulesJSON = require('../data/time.json');
+const timeRulesJSON = require('../data/time-sensitive-elements.json');
 const IndexedArray = require('../classes/IndexedArray');
 const timeRules = new IndexedArray(timeRulesJSON);
 
@@ -11,7 +11,7 @@ const GREETING_ID = 'greeting';
 const DEFAULT_GOODBYE = 'Goodbye';
 const DEFAULT_GREETING = 'Hello';
 
-class TimeSensitive {
+class TimeSensitiveElement {
     constructor(currentTime) {
         this.goodbye = this.getGoodbye(currentTime);
         this.greeting = this.getGreeting(currentTime);
@@ -47,4 +47,4 @@ class TimeSensitive {
     }
 }
 
-module.exports = TimeSensitive;
+module.exports = TimeSensitiveElement;

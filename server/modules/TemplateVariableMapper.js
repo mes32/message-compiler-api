@@ -1,7 +1,7 @@
 const moment = require('moment');
 require('moment-timezone');
 
-const TimeSensitive = require('./TimeSensitive');
+const TimeSensitive = require('../classes/TimeSensitiveElement');
 
 const UNIX_SECONDS_FORMAT = 'x';
 const MESSAGE_TIME_FORMAT = 'ddd DD/MM/YYYY, h:mmA z';
