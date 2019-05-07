@@ -4,9 +4,9 @@ require('moment-timezone');
 const TemplateVariableMapper = require('../modules/TemplateVariableMapper');
 
 class Message {
-    constructor(template, company, guest) {
+    constructor(template, timeSensitiveElements, company, guest) {
         const currentTime = moment().tz(company.timezone);
-        const variableMap = new TemplateVariableMapper(company, guest, currentTime);
+        const variableMap = new TemplateVariableMapper(timeSensitiveElements, currentTime, company, guest);
         let message = this.evaluateVariables(template.message, variableMap);
         
         this.timestamp = currentTime.format();

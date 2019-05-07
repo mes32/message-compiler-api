@@ -3,6 +3,10 @@ class IndexedArray {
         this.array = array;
     }
 
+    [Symbol.iterator]() {
+        return this.array.values();
+    }
+
     select(id) {
         const found = this.array.find((element) => {
             return element.id === id;

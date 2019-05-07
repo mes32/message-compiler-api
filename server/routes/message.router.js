@@ -5,14 +5,17 @@ const Company = require('../classes/Company');
 const Guest = require('../classes/Guest');
 const Message = require('../classes/Message');
 const Template = require('../classes/Template');
+const TimeSensitiveElement = require('../classes/TimeSensitiveElement');
 
 const companyJSON = require('../data/companies.json');
 const guestJSON = require('../data/guests.json');
 const templateJSON = require('../data/templates.json');
+const timeSensitiveElementJSON = require('../data/time-sensitive-elements.json');
 
 const companyArray = Company.loadJSON(companyJSON);
 const guestArray = Guest.loadJSON(guestJSON);
 const templateArray = Template.loadJSON(templateJSON);
+const timeSensitiveElements = TimeSensitiveElement.loadJSON(timeSensitiveElementJSON);
 
 router.get('/', (req, res) => {
     const templateID = parseInt(req.query.template);
@@ -24,7 +27,7 @@ router.get('/', (req, res) => {
             const template = templateArray.select(templateID);
             const company = companyArray.select(companyID);
             const guest = guestArray.select(guestID);
-            const message = new Message(template, company, guest);
+            const message = new Message(template, timeSensitiveElements, company, guest);
             res.send(message);
         } catch (err) {
             console.error(err);
@@ -46,7 +49,7 @@ router.post('/', (req, res) => {
             const template = { message: templateString };
             const company = companyArray.select(companyID);
             const guest = guestArray.select(guestID);
-            const message = new Message(template, company, guest);
+            const message = new Message(template, timeSensitiveElements, company, guest);
             res.send(message);
         } catch (err) {
             console.error(err);

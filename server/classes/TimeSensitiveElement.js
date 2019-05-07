@@ -1,40 +1,35 @@
 const moment = require('moment');
 require('moment-timezone');
 
-const timeRulesJSON = require('../data/time-sensitive-elements.json');
-const IndexedArray = require('../classes/IndexedArray');
-const timeRules = new IndexedArray(timeRulesJSON);
-
-const GOODBYE_ID = 'goodbye';
-const GREETING_ID = 'greeting';
-
-const DEFAULT_GOODBYE = 'Goodbye';
-const DEFAULT_GREETING = 'Hello';
+const IndexedArray = require('./IndexedArray');
+const TimeSensitiveRule = require('./TimeSensitiveRule');
 
 class TimeSensitiveElement {
-    constructor(currentTime) {
-        this.goodbye = this.getGoodbye(currentTime);
-        this.greeting = this.getGreeting(currentTime);
+    constructor(jsonObject) {
+        this.id = jsonObject.id;
+        this.description = jsonObject.description;
+        this.defaultValue = jsonObject.defaultValue;
+        this.rules = TimeSensitiveRule.loadJSON(jsonObject.rules);
+
+        for (let variable in this) {
+            if (this[variable] === undefined) {
+                throw new Error(`Undefined value for required variable '${variable}' in class TimeSensitiveElement.`);
+            }
+        }
     }
 
-    getGoodbye(currentTime) {
-        const rules = timeRules.select(GOODBYE_ID).rules;
-        for (let rule of rules) {
-            if (this.isBetween(currentTime, rule.hourStart, rule.hourEnd)) {
+    static loadJSON(jsonArray) {
+        const companyArray = jsonArray.map(jsonObject => new TimeSensitiveElement(jsonObject));
+        return new IndexedArray(companyArray);
+    }
+
+    get(currentTime) {
+        for (let rule of this.rules) {
+            if (this.isBetween(currentTime, rule.startHour, rule.endHour)) {
                 return rule.value;
             }
         }
-        return DEFAULT_GOODBYE;
-    }
-
-    getGreeting(currentTime) {
-        const rules = timeRules.select(GREETING_ID).rules;
-        for (let rule of rules) {
-            if (this.isBetween(currentTime, rule.hourStart, rule.hourEnd)) {
-                return rule.value;
-            }
-        }
-        return DEFAULT_GREETING;
+        return this.defaultValue;
     }
 
     isBetween(currentTime, startHour, endHour) {

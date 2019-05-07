@@ -7,15 +7,13 @@ const UNIX_SECONDS_FORMAT = 'x';
 const MESSAGE_TIME_FORMAT = 'ddd DD/MM/YYYY, h:mmA z';
 
 class TemplateVariableMapper {
-    constructor(company, guest, currentTime) {
-        if (company, guest, currentTime) {
-            const timeSensitive = new TimeSensitive(currentTime);
-
+    constructor(timeSensitiveElements, currentTime, company, guest) {
+        if (timeSensitiveElements, currentTime, company, guest) {
             this.city = company.city;
             this.company = company.company;
             this.firstName = guest.firstName;
-            this.goodbye = timeSensitive.goodbye;
-            this.greeting = timeSensitive.greeting;
+            this.goodbye = timeSensitiveElements.select('goodbye').get(currentTime);
+            this.greeting = timeSensitiveElements.select('greeting').get(currentTime);
             this.lastName = guest.lastName;
             this.reservationEnd = this.getTimeFormat(guest.reservation.startTimestamp, company.timezone);
             this.reservationStart = this.getTimeFormat(guest.reservation.endTimestamp, company.timezone);

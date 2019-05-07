@@ -1,51 +1,55 @@
 [
     {
         "id": "greeting",
+        "description": "A short time sensitive greeting",
+        "defaultValue": "Greetings",
         "rules": [
             {
                 "value": "Good evening",
-                "hourStart": 0,
-                "hourEnd": 4
+                "startHour": 0,
+                "endHour": 4
             },
             {
                 "value": "Good morning",
-                "hourStart": 4,
-                "hourEnd": 12
+                "startHour": 4,
+                "endHour": 12
             },
             {
                 "value": "Good afternoon",
-                "hourStart": 12,
-                "hourEnd": 16
+                "startHour": 12,
+                "endHour": 16
             },
             {
                 "value": "Good evening",
-                "hourStart": 16,
-                "hourEnd": 23
+                "startHour": 16,
+                "endHour": 23
             }
         ]
     },
     {
         "id": "goodbye",
+        "description": "A short time sensitive send-off message",
+        "defaultValue": "Goodbye",
         "rules": [
             {
                 "value": "Have a restful night",
-                "hourStart": 0,
-                "hourEnd": 4
+                "startHour": 0,
+                "endHour": 4
             },
             {
                 "value": "Enjoy the rest of your day",
-                "hourStart": 4,
-                "hourEnd": 18
+                "startHour": 4,
+                "endHour": 18
             },
             {
                 "value": "Have a relaxing evening",
-                "hourStart": 18,
-                "hourEnd": 21
+                "startHour": 18,
+                "endHour": 21
             },
             {
                 "value": "Have a restful night",
-                "hourStart": 21,
-                "hourEnd": 23
+                "startHour": 21,
+                "endHour": 23
             }
         ]
     }
