@@ -1,10 +1,11 @@
 const moment = require('moment');
 require('moment-timezone');
 
-const TimeSensitive = require('../classes/TimeSensitiveElement');
-
 const UNIX_SECONDS_FORMAT = 'x';
 const MESSAGE_TIME_FORMAT = 'ddd DD/MM/YYYY, h:mmA z';
+
+const GOODBYE = 'goodbye';
+const GREETING = 'greeting';
 
 class TemplateVariableMapper {
     constructor(timeSensitiveElements, currentTime, company, guest) {
@@ -12,8 +13,8 @@ class TemplateVariableMapper {
             this.city = company.city;
             this.company = company.company;
             this.firstName = guest.firstName;
-            this.goodbye = timeSensitiveElements.select('goodbye').get(currentTime);
-            this.greeting = timeSensitiveElements.select('greeting').get(currentTime);
+            this.goodbye = timeSensitiveElements.select(GOODBYE).get(currentTime);
+            this.greeting = timeSensitiveElements.select(GREETING).get(currentTime);
             this.lastName = guest.lastName;
             this.reservationEnd = this.getTimeFormat(guest.reservation.startTimestamp, company.timezone);
             this.reservationStart = this.getTimeFormat(guest.reservation.endTimestamp, company.timezone);
